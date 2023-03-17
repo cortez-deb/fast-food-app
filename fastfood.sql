@@ -1,0 +1,2 @@
+-- Active: 1678712719481@@127.0.0.1@3306@food
+SELECT * FROM meal;
