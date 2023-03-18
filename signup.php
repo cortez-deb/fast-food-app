@@ -60,9 +60,7 @@ include 'navigation.php';
         </div>
     </div>
     <script src="/jquery/scripts.js">
-        function reload(){
-           document.getElementById("email_span").style.visibility="hidden";
-        }
+
     </script>
 </body>
 </html>

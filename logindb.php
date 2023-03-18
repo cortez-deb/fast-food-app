@@ -35,18 +35,25 @@ if(isset($_POST['Submit'])){
                         $userexists = $userexistsQuery->fetch(PDO::FETCH_ASSOC);
                           if(empty($userexists)){
                             $responce["success"]=false;
-                            $responce["error"]["email"]= '<span class="text-danger">Invalid password </span>';
+                            $responce["error"]["email"]= '<span class="text-danger">Please check your details and try again </span>';
                             $credentialserror=$responce["error"]["email"];                             
                             }
                             else{
                                 if(!password_verify($password,$userexists["password"])){
                                     $responce["success"]=false;
-                                    $responce["error"]["email"]= '<span class="text-danger">Invalid password </span>';
+                                    $responce["error"]["email"]= '<span class="text-danger">Please check your details and try again</span>';
                                     $credentialserror=$responce["error"]["email"];
                                 }else{
-                                    $_SESSION['user']=$userEmailExists;
-                                    $_SESSION["login"] = "OK";
-                                    header("Location:router.php?dashboard"); 
+                                    try{
+                                        $username =  $pdo->query("SELECT email FROM user WHERE email='{$email}'");
+                                        $username = $username->fetch(PDO::FETCH_ASSOC);
+                                        $_SESSION['email']=$username["email"];
+                                        $_SESSION["login"] = "OK";
+                                        header("Location:router.php?dashboard"); 
+                                    }catch(PDOException $e){
+
+                                    }
+
                                 }
                             }    
                     }
