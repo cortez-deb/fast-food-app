@@ -34,47 +34,47 @@ include 'profiler.php';
                 PERSONAL DETAILS-CLIENT
             
             </h3>
-            <?php echo $success ?>
+            <?php echo $success; echo $missingdetails?>
         </div>
 
         <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="firstname" class="form-label shadow-sm">First Name</label>
-            <input type="text" class="form-control" name="firstname">
+            <input type="text" class="form-control" name="firstname" placeholder="<?php echo $firstname ?>">
             <?php echo $firstNameEmpty ?>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12">
-            <label for="secondname" class="form-label shadow-sm">Second Name</label>
-            <input type="text" class="form-control" name="lastname">
+            <label for="secondname" class="form-label shadow-sm">Second Name :</label>
+            <input type="text" class="form-control" name="lastname"  placeholder="<?php echo $secondname ?>">
             <?php echo $secondNameEmpty?>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="inputAddress" class="form-label shadow-sm">Address</label>
-            <input type="text" class="form-control" name="address1" placeholder="1234 Main St">
+            <input type="text" class="form-control" name="address1" placeholder="<?php echo $address1 ?>">
             <?php echo $address1Empty?>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="inputAddress2" class="form-label shadow-sm">Address 2</label>
-            <input type="text" class="form-control" name="address2" placeholder="Apartment, studio, or floor">
+            <input type="text" class="form-control" name="address2" placeholder="<?php echo $address2 ?>">
             <?php echo $address2Empty?>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="inputTown" class="form-label shadow-sm">Town / City</label>
-            <input type="text" class="form-control" name="town">
+            <input type="text" class="form-control" name="town" placeholder="<?php echo $town ?>">
             <?php echo $townEmpty?>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="inputStreet" class="form-label shadow-sm">Street</label>
-            <input type="text" class="form-control" name="street">
+            <input type="text" class="form-control" name="street"  placeholder="<?php echo $street ?>">
             <?php echo $streetEmpty?>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="inputZip" class="form-label shadow-sm">Zip</label>
-            <input type="text" class="form-control" name="zip">
+            <input type="text" class="form-control" name="zip"  placeholder="<?php echo $zip ?>">
             <?php echo $zipEmpty?>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12">
             <label for="phone" class="form-label shadow-sm">Phone Number</label>
-            <input type="number" class="form-control" name="phone" placeholder="+254">
+            <input type="number" class="form-control" name="phone" placeholder="<?php echo $phone?>">
             <?php echo $phoneEmpty ?>
         </div>
         <div class="col-lg-12">

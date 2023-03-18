@@ -10,7 +10,7 @@ $zipEmpty = "";
 $phoneEmpty = "";
 $success="";
 $pdo = pdo_connect_mysql();
-$firstname = "";
+$firstname ="";
 $secondname = "";
 $address1 = "";
 $address2 = "";
@@ -18,7 +18,32 @@ $town = "";
 $street = "";
 $zip = "";
 $phone ="";
-retrieve($pdo);
+$missingdetails="";
+try {
+    $currentUsereMail= $_SESSION['email'];
+    $userdataQuery = $pdo->query("SELECT * FROM user WHERE email='{$currentUsereMail}';");
+    $userData = $userdataQuery->fetch(PDO::FETCH_ASSOC);
+    if(empty($userData)){
+        $missingdetails = '<span class="text-danger">Details Please update your detils</span>';
+    }else{
+    $firstname=strtoupper( $userData['firstname']);
+    $secondname =strtoupper( $userData['lastname']); 
+    $address1 =strtoupper( $userData['address1']);
+    $address2=strtoupper( $userData['address2']); 
+    $town = strtoupper($userData['town']);
+    $street=strtoupper( $userData['street']);
+    $zip = strtoupper($userData['zip']);
+    $phone= strtoupper($userData['phone']);
+                
+    }
+}
+ catch (PDOException $ex)
+  {
+    $success =$ex->getMessage();
+    $responce["responce"] = $success;
+            
+}
+
 if (isset($_POST['Submit'])) {
     $pdo = pdo_connect_mysql();
     $firstname = check($_POST['firstname']);
@@ -115,30 +140,20 @@ function check($input)
     $input = trim($input);
     return $input;
 }
-function retrieve($pdo){
-    try {
-        $currentUsereMail= $_SESSION['email'];
-        $userdataQuery = $pdo->query("SELECT * FROM users WHERE email='{$currentUsereMail}");
-        $userData = $userdataQuery->fetch(PDO::FETCH_ASSOC);
-        if(empty($userData)){
-            $success = '<span class="text-danger">Details Please update your detils</span>';
-        }else{
-            $responce = [
-                    "firstname" => $userData['firstname'],
-                    "secondname" => $userData['lastname'],
-                    "address1" => $userData['address1'],
-                    "address2" => $userData['address2'],
-                    "town" => $userData['town'],
-                    "street" => $userData['street'],
-                    "zip" => $userData['zip'],
-                    "phone" => $userData['phone'],  
-            ];
-        }
-    }
-     catch (PDOException $ex)
-      {
-        $success =$ex->getMessage();
-                
-    }
-    return $responce;
-}
+// function retrieve($pdo){
+    
+//     $responce = [
+//             "firstname" => "",
+//             "secondname" => "",
+//             "address1" => "",
+//             "address2" => "",
+//             "town" => "",
+//             "street" => "",
+//             "zip" => "",
+//             "phone" => "",
+//             "responce"=> ""
+        
+//     ];
+   
+//     return $responce;
+// }
