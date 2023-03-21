@@ -34,7 +34,7 @@ include 'profiler.php';
                 PERSONAL DETAILS-CLIENT
             
             </h3>
-            <?php echo $success; echo $missingdetails?>
+            <?php echo $success; ?><?php echo $missingdetails ?>
         </div>
 
         <div class="col-lg-3 col-md-3 col-sm-12">

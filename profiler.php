@@ -23,9 +23,11 @@ try {
     $currentUsereMail= $_SESSION['email'];
     $userdataQuery = $pdo->query("SELECT * FROM user WHERE email='{$currentUsereMail}';");
     $userData = $userdataQuery->fetch(PDO::FETCH_ASSOC);
+    //!in_array($userData['firstname'],$first)
     if(empty($userData)){
         $missingdetails = '<span class="text-danger">Details Please update your detils</span>';
-    }else{
+    }
+    else{
     $firstname=strtoupper( $userData['firstname']);
     $secondname =strtoupper( $userData['lastname']); 
     $address1 =strtoupper( $userData['address1']);
