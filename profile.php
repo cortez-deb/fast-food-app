@@ -1,29 +1,55 @@
 <?php
 include 'profiler.php';
+
 ?>
 <div class="col-lg-3 col-md-3 col-sm-12">
     <div class="card shadow p-3 mb-5 bg-body ">
-        <img src="./photos/jpeg.jpg" style="height:100px; width:100px" class="shadow-lg  mx-auto d-block rounded img-fluid" alt="...">
+<?php
+               
+               $name =$_SESSION['email'];
+                try{
+                    $userdataQuery = $pdo->query("SELECT * FROM user WHERE email='{$name}';");
+                    $userData = $userdataQuery->fetch(PDO::FETCH_ASSOC);
+                    $image=$userData['image'];
+
+                }catch(PDOException $e){
+
+                }
+?>
+    <img src="/profile/<?php echo $image;?>" style="height:10rem" class="shadow-lg card-img-top  rounded" alt="...">
         <div class="card-body">
 
             <p class="card-text text-center align-items-center">
             <h4 class="text-center">
 
                 <?php
-                $name =$_SESSION['email'];
-                $ClientType = "Client";
 
+                
                 echo $name;
                 ?>
                 <br>
                 <?php
-                echo $ClientType;
+                $access=$_SESSION['access'];
+                if($access==1){
+                    echo "Admin";
+                }
+                elseif($access==2){
+                    echo "User";
+                }
+                elseif($access==3){
+                    echo"Deliverer";
+                }
 
                 ?>
                
             </h4>
-            <a type="button" href="router.php?page=logout" class="btn btn-primary position-relative end-0">LogOut</a>
+
+            
             </p>
+            <form class="mb-3" action="profile_image_update.php" method="post" enctype="multipart/form-data">
+                <input type="file" name="image" id="image">
+                <input type="submit" name="Submit" value="Submit" class="mt-4 btn shadow-sm text-dark bg-primary">
+            </form>
         </div>
     </div>
 </div>

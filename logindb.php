@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 include 'connect.php';
 
 $emailEmptyerror="";
@@ -45,11 +45,35 @@ if(isset($_POST['Submit'])){
                                     $credentialserror=$responce["error"]["email"];
                                 }else{
                                     try{
-                                        $username =  $pdo->query("SELECT email FROM user WHERE email='{$email}'");
-                                        $username = $username->fetch(PDO::FETCH_ASSOC);
-                                        $_SESSION['email']=$username["email"];
-                                        $_SESSION["login"] = "OK";
-                                        header("Location:router.php?dashboard"); 
+                                        $stmt =  $pdo->query("SELECT * FROM user WHERE email='{$email}'");
+                                        $stmt->execute();
+                                        $details = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                        foreach($details as $data):
+                                          $mail=$data["email"];  
+                                          $accesslevel=$data['access'];
+                                        endforeach;
+                                        if($accesslevel==1){
+                                            session_start();
+                                            $_SESSION['email']=$mail;
+                                            $_SESSION['access']=$accesslevel;
+                                            $_SESSION["login"] = "OK";
+                                            header("location:router.php?adminDashboard"); 
+                                        }
+                                        elseif($accesslevel==2){
+                                            session_start();
+                                            $_SESSION['email']=$mail;
+                                            $_SESSION['access']=$accesslevel;
+                                            $_SESSION["login"] = "OK";
+                                            header("location:router.php?dashboard");
+                                        }                                        
+                                        elseif($accesslevel==3){
+                                            session_start();
+                                            $_SESSION['access']=$accesslevel;
+                                            $_SESSION['email']=$mail;
+                                            $_SESSION["login"] = "OK";
+                                            header("location:router.php?delivery");
+                                        }
+
                                     }catch(PDOException $e){
 
                                     }

@@ -1,5 +1,4 @@
 <?php
-session_start();
 $firstNameEmpty = "";
 $secondNameEmpty = "";
 $address1Empty = "";
