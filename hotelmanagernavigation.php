@@ -5,12 +5,10 @@
         <div class="container-fluid">
           <a class="navbar-brand" href="router.php?page=dashboard">Profile</a>
 
-          <a class="navbar-brand" aria-current="page" href="#">Downloads</a>
-          <a class="navbar-brand" href="router.php?page=index">Breakfast</a>
-          <a class="navbar-brand" href="router.php?page=index">Mid morning</a>
-          <a class="navbar-brand" href="router.php?page=index">Lunch</a>
-          <a class="navbar-brand" href="router.php?page=index">Dinner</a>
-
+          <a class="navbar-brand" aria-current="page" href="#">View Oders</a>
+          <a class="navbar-brand" href="router.php?page=index">ADD MEAL</a>
+          <a class="navbar-brand" href="router.php?page=index">MEALS</a>
+          <a class="navbar-brand" href="router.php?page=index">PAYMENTS</a>
           <a class="btn btn-primary" href="router.php?page=logout">LOGOUT</a>
 
 

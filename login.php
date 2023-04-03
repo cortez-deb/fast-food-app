@@ -14,9 +14,7 @@
     <link rel="stylesheet" href="sidebar.css">
     </style>
 </head>
-<?php
-include 'navigation.php';
-?>
+
 
 <body class="align-content-center">
     <div class="container-fluid position-relative align-content-center">
@@ -45,7 +43,7 @@ include 'navigation.php';
                             <?php echo $passwordEmptyerror?>
                         </div>
                         <div class="mb-3 form-check">
-                        <p class="card-text">Don't have an account?    <a href="router.php?page=signup" class="card-link">Sign up?</p>
+                        <p class="card-text">Don't have an account?    <a href="signup.php" class="card-link">Sign up?</p>
                         <a href="#" class="card-link">Forgot password?</a>
 
                         </div>

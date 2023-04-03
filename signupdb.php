@@ -5,7 +5,7 @@ $passwordEmptyerror="";
 $confirmPasswordEmptyerror="";
 $passwordMissMatcherror="";
 $passwordLengthError="";
-
+include 'connect.php';
 if(isset($_POST['Submit'])){
     $pdo=pdo_connect_mysql();
     $email =stripslashes( htmlspecialchars($_POST["email"]));
@@ -67,9 +67,10 @@ if(isset($_POST['Submit'])){
                                     try{      
                                     $hashedPassword = password_hash($password,PASSWORD_DEFAULT);
                                     $user_id=$email;
-                                    $stmt = $pdo->prepare("INSERT INTO user( `user_ID`, `email`, `password`) VALUES ('{$user_id}','{$email}','{$hashedPassword}')");
+                                    $access=2;
+                                    $stmt = $pdo->prepare("INSERT INTO user( `user_ID`, `email`, `password`,`access`) VALUES ('{$user_id}','{$email}','{$hashedPassword}','{$access}')");
                                     $stmt->execute();
-                                    if($stmt){header("location:router.php?page=login");}
+                                    if($stmt){header("location:login.php");}
                                     }
                                     catch(PDOException $exception){
                                         $responce["success"]=false;

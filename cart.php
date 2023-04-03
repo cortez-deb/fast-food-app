@@ -19,11 +19,13 @@
     <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 
-<?php 
-include 'login.inc.php';
- ?>
 
-<?php include 'navigation.php'; ?>
+
+<?php include 'navigation.php';
+            if(isset($_GET['price'])){
+              $price= $_GET['price'];
+             
+            } ?>
 
 <div class="container">
   <table class="table my-3">
@@ -33,6 +35,7 @@ include 'login.inc.php';
         <th>S.no</th>
         <th>Product Name</th>
         <th>Quantity</th>
+        <th>Amount</th>
         <th colspan="2">Action</th>
       </tr>
     </thead>
@@ -44,18 +47,22 @@ include 'login.inc.php';
         foreach ($_SESSION['cart'] as $cart) :
       ?>
           <tr class="text-center">
-            <td><?php echo $i; ?> # </td>
-            <td> Product <?= $cart['pro_id']; ?></td>
+            <td><?php echo $i; ?> </td>
+            <td> Meal <?= $cart['pro_id']; ?></td>
             <td>
-              <form action="update.php" method="post">
+              <form action="router.php?page=update" method="post">
                 <input type="number" value="<?= $cart['qty']; ?>" name="qty" min="1">
                 <input type="hidden" name="upid" value="<?= $cart['pro_id']; ?>">
             </td>
+            <td><? 
+                 echo $price;
+            ?></td>
             <td>
               <input type="submit" name="update" value="Update" class="btn btn-sm btn-primary">
               </form>
             </td>
-            <td><a class="btn btn-sm btn-danger" href="removecartitem.php?id=<?= $cart['pro_id']; ?>">Remove</a></td>
+            <td><a class="btn btn-sm btn-danger" href="router.php?page=removecartitem& id=<?= $cart['pro_id']; ?>">Remove</a></td>
+            <td><a class="btn btn-sm btn-primary" href="router.php?page=placeoder& id=<?= $cart['pro_id']; ?>">Place Oder</a></td>
           </tr>
       <?php
           $i++;
