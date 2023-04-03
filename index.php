@@ -78,11 +78,7 @@ include 'login.inc.php';
     </div>
     <div class="row align-items-start">
       <div class="d-flex col">
-        <a class="btn btn-outline-success"  href="router.php?page=cart">Cart
-          <?php if (isset($_SESSION['cart'])) : ?>
-            <?php echo count($_SESSION['cart']);; ?>
-          <?php endif; ?>
-        </a>
+
       </div>
     </div>
     <div class="row align-items-start">

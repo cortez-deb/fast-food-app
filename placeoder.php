@@ -1,8 +1,9 @@
 <?php 
+$messege="";
 if(isset($_GET['id'])){
     $proid = $_GET['id'];
    $quantity= $_SESSION['cart'][$proid]['qty'];
-
+   $name =$_SESSION['email'];
    
    try{
     try{
@@ -15,9 +16,12 @@ if(isset($_GET['id'])){
        $payout=pricecalcutor($quantity,$price);
        echo $payout;
     }catch(PDOException $ex){}
-    $stmt = $pdo->prepare("INSERT INTO user( `user_ID`, `email`, `password`,`access`) VALUES ('{$user_id}','{$email}','{$hashedPassword}','{$access}')");
+    $stmt = $pdo->prepare("INSERT INTO oders(`mealID`, `amount`, `price`, `email`)
+     VALUES ('{$proid}','{$quantity}','{$price}','{$name}');");
     $stmt->execute();
-    if($stmt){header("location:login.php");}
+    if($stmt)
+    {$messege='<span class="text-danger">Oder Placed PLease wait for confirmation</span>';
+        header("location:router.php?page=cart& reply='{$messege}'");}
     }
     catch(PDOException $exception){
         $responce["success"]=false;
