@@ -33,42 +33,52 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-12"></div>
-                    <div class="col-6 col-lg-6 col-md-6 col-12 mt-5 text-center shadow m-2" >
+                    <div class="col-6 col-lg-6 col-md-6 col-12 mt-5 text-center shadow m-2">
                         <h3>Add a Meal</h3>
-                
-                        <?php include("hotelManagerAddMealdb.php");  echo $added ?>
+                            <div class="col">
+                                
+                        <?php include "hotelManagerAddMealdb.php";
+                       ?>
+                            </div>
+                            
                         <form method="POST" action="" enctype="multipart/form-data">
                             <div class="row mb-3">
+                                <?=$added?>
                                 <label for="name" class="col-sm-2 col-form-label">Meal name</label>
                                 <div class="col">
                                     <input type="text" class="form-control" id="name" name="name">
                                 </div>
-                     
+                                <?php echo $emptyName ?>
                             </div>
-                            <?php echo $emptyName ?>
+
                             <div class="row mb-3">
                                 <label for="description" class="col-sm-2 col-form-label">Description</label>
-                                <textarea class="col-sm-10 g-3" name="description" style="height:10rem;" placeholder="Please use a short description">
-                                </textarea>
-                       
+                                <div class="col">
+                                    <input class="form-control" name="description" placeholder="Please use a short description ">
+                                </div>
+                                <?php echo $emptyDescription ?>
                             </div>
-                            <?php echo $emptyDescription ?>
+
                             <div class="row mb-3">
                                 <label for="name" class="col-sm-2 col-form-label">Price</label>
-                                <div class="col">
-                                    <input type="text" class="form-control" id="price" name="price">
-                    
+                                <div class="col input-group">
+                                    <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" id="price" name="price">
+                                    <span class="input-group-text border-end-0">$</span>
+                                    <span class="input-group-text border-start-0">0.00</span>
                                 </div>
                                 <?php echo $emptyprice ?>
                             </div>
+
+
                             <div class="row mb-3">
-                            <label for="name" class="col-2 col-form-label">Meal Image    </label>
-                            
-                              <input type="file" name="image" id="image" class="bg-light col-10">
-                           
+                                <label for="name" class="col-2 col-form-label">Meal Image </label>
+
+                                <input type="file" name="image" id="image" class="bg-light col-10 border ">
+
                             </div>
-                           <input  type="submit" value="submit" name="submit" class="col-12 btn btn-primary mb-3">
-                            
+                            <?php echo $image ?>
+                            <input type="submit" value="Submit" name="Submit" class="col-12 btn btn-primary mb-3">
+
                         </form>
                     </div>
                     <div class="col-lg-3 col-md-3 col-12"></div>

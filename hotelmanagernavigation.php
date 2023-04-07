@@ -5,13 +5,11 @@
         <div class="container-fluid">
           <a class="navbar-brand" href="router.php?page=dashboard">Profile</a>
 
-          <a class="navbar-brand" aria-current="page" href="#">View Oders</a>
-          <a class="navbar-brand" href="router.php?page=hotelManagerAddMeal">ADD MEAL</a>
-          <a class="navbar-brand" href="router.php?page=index">MEALS</a>
-          <a class="navbar-brand" href="router.php?page=index">PAYMENTS</a>
-          <a class="btn btn-primary" href="router.php?page=logout">LOGOUT</a>
-
-
+          <a class="navbar-brand" aria-current="page" href="hotelrouter.php?page=hotelmanagerViewOders">View Oders</a>
+          <a class="navbar-brand" href="hotelrouter.php?page=hotelManagerAddMeal">ADD MEAL</a>
+          <a class="navbar-brand" href="hotelrouter.php?page=hotelManagerMeals">MEALS</a>
+          <a class="navbar-brand" href="#">PAYMENTS</a>
+          <a class="btn btn-primary" href="hotelrouter.php?page=logout">LOGOUT</a>
         </div>
 
       </nav>

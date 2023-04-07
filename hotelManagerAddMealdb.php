@@ -6,8 +6,8 @@
  $added="";
 if (isset($_POST["Submit"])) {
     $pdo = pdo_connect_mysql();
-    $name = check($_POST['name']);
-    $description = check($_POST['description']);
+    $name =strtoupper( check($_POST['name']));
+    $description =strtoupper(check($_POST['description']));
     $price = check($_POST['price']);
     $fileExtensionsAllowed = ['jpeg', 'jpg', 'png'];
     $fileName = $_FILES["image"]["name"];
@@ -25,40 +25,45 @@ if (isset($_POST["Submit"])) {
             "image" => ""
         ]
     ];
-    if (empty($name) || empty($description) || empty($price)) {
+    if (empty($name) || empty($description) || empty($price)||empty($fileArray)) {
         if (empty($name)) {
             $responce['success'] = false;
-            $responce['error']['name'] = '<span class="text-danger">Please enter name</span>';
+            $responce['error']['name'] = '<span class="alert alert-danger col-3" role="alert">Please enter name</span>';
             $emptyName = $responce['error']['name'];
         }
         if (empty($description)) {
             $responce['success'] = false;
-            $responce['error']['description'] = '<span class="text-danger">Please enter a short description</span>';
+            $responce['error']['description'] = '<span class="alert alert-danger col-3" style="height: max 10px;" role="alert">Description required</span>';
             $emptyDescription = $responce['error']['description'];
         }
         if (empty($price)) {
             $responce['success'] = false;
-            $responce['error']['price'] = '<span class="text-danger">Please enter price</span>';
+            $responce['error']['price'] = '<span class="alert alert-danger col-3" role="alert">Please enter price</span>';
             $emptyprice = $responce['error']['price'];
+        }
+        if (empty($fileArray)) {
+            $responce['success'] = false;
+            $responce['error']['price'] = '<span class="alert alert-danger col-3" role="alert">Image Required</span>';
+            $image = $responce['error']['image'];
         }
     } else {
         if (is_numeric($price)) {
             $responce['success'] = true;
         } else {
             $responce['success'] = false;
-            $responce['error']['weight'] = '<span class="text-danger">Please enter valid number</span>';
-            $emptyprice = $responce['error']['weight'];
+            $responce['error']['price'] = '<span class="alert alert-danger" role="alert">Please enter a valid number</span>';
+            $emptyprice = $responce['error']['price'];
         }
         if($responce){
             if($fileSize){
                 if(!in_array($fileExtension,$fileExtensionsAllowed)){
                     $response["success"] = false;
-                    $response["error"]["image"] ='<span class="text-danger">This file extension is not allowed. Please upload a JPEG or PNG file</span>';
+                    $response["error"]["image"] ='<span class="alert alert-danger" role="alert">This file extension is not allowed. Please upload a JPEG or PNG file</span>';
                     $image=$response["error"]["image"];
                 }else{
                     if ($fileSize > 6000000) {
                         $response["success"] = false;
-                        $error=$response["error"]["image"] ='<span class="text-danger">File exceeds maximum size (6MB)</span>';
+                        $error=$response["error"]["image"] ='<span class="alert alert-danger" role="alert">File exceeds maximum size (6MB)</span>';
                         $image=$response["error"]["image"];
                     }else{
                         $newFileName = $name.".".$fileExtension;
@@ -68,9 +73,9 @@ if (isset($_POST["Submit"])) {
                                 VALUES ('{$name}','{$newFileName}','{$price}','{$description}');");
                                $stmt->execute();
                                if($stmt){
-                                   $added='<span class="text-danger">Meal added</span>';
+                                   $added='<span class="alert alert-success" role="alert">Meal added</span>';
                                }else{
-                                   $added='<span class="text-danger">Error occcured</span>';
+                                   $added='<span class="alert alert-danger" role="alert">Error occcured</span>';
                                }
                             }catch(PDOException $e){
                                 echo $e->getMessage();

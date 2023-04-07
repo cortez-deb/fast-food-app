@@ -21,8 +21,8 @@
 </head>
 
 <body class="mx-0 p-0 mb-0 border-0">
-<?php
-include 'login.inc.php';
+  <?php
+  include 'login.inc.php';
   // Check if product is coming or not
   if (isset($_GET['pro_id'])) {
 
@@ -36,7 +36,7 @@ include 'login.inc.php';
 
       // now we compare whther id already exist with "in_array() function"
       if (in_array($proid, $acol)) {
-       
+
 
         // Updating quantity if item already exist
         $_SESSION['cart'][$proid]['qty'] += 1;
@@ -48,7 +48,6 @@ include 'login.inc.php';
         ];
 
         $_SESSION['cart'][$proid] = $item;
-        
       }
     } else {
       // If cart is completely empty, then store item in session cart
@@ -58,21 +57,19 @@ include 'login.inc.php';
       ];
 
       $_SESSION['cart'][$proid] = $item;
-     
-
     }
   }
 
   ?>
-  
+
   <div class="container-fluid">
     <div class="row align-items-start">
       <?php
       include("navigation.php");
-        // Get the 4 most recently added products
-  $stmt = $pdo->prepare('SELECT * FROM meal ORDER BY price');
-  $stmt->execute();
-  $products_by_price = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      // Get the 4 most recently added products
+      $stmt = $pdo->prepare('SELECT * FROM meal ORDER BY price');
+      $stmt->execute();
+      $products_by_price = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       ?>
     </div>
@@ -82,23 +79,23 @@ include 'login.inc.php';
       </div>
     </div>
     <div class="row align-items-start">
-    <?php foreach ($products_by_price as $product) : ?>
-      
-      <div class="col mb-2  mt-2 m-0 g-0">
-          <div class="card" style="width: 18rem;">
-              <img src="photos/<?= $product['image'] ?>" class="card-img-top" style="height: 200px;">
+      <?php foreach ($products_by_price as $product) : ?>
 
-              <div class="card-body">
-                <h5 class="card-title"><?= $product['name'] ?></h5>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore excepturi quam quia quo alias iste magni et.</p>
-                <p class="align-items-center">
-                <h4  class="text-dark">Ksh.<?= $product['price'] ?></h4>
-                <a href="router.php?page=index& pro_id=<?= $product['meal_ID']?>" class="btn btn-success">Add to Cart</a>
-                </p>
-              </div>
+        <div class="col mb-2  mt-2 m-0 g-0">
+          <div class="card" style="width: 18rem;">
+            <img src="photos/<?= $product['image'] ?>" class="card-img-top" style="height: 200px;">
+
+            <div class="card-body">
+              <h5 class="card-title"><?= $product['name'] ?></h5>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore excepturi quam quia quo alias iste magni et.</p>
+              <p class="align-items-center">
+              <h4 class="text-dark">Ksh.<?= $product['price'] ?></h4>
+              <a href="router.php?page=index& pro_id=<?= $product['meal_ID'] ?>" class="btn btn-success">Add to Cart</a>
+              </p>
+            </div>
           </div>
-        
-      </div>
+
+        </div>
       <?php endforeach; ?>
     </div>
   </div>
@@ -109,13 +106,12 @@ include 'login.inc.php';
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
   <script src="js/bootstrap.bundle.js">
-  var myModal = document.getElementById('myModal')
-  var myInput = document.getElementById('myInput')
+    var myModal = document.getElementById('myModal')
+    var myInput = document.getElementById('myInput')
 
-  myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
-  })
-
+    myModal.addEventListener('shown.bs.modal', function() {
+      myInput.focus()
+    })
   </script>
 </body>
 
