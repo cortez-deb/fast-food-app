@@ -38,14 +38,16 @@
                             $stmt = $pdo->prepare("SELECT * FROM `oders` WHERE  email='{$user}'");
                             $stmt->execute();
                             $Data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                            foreach ($Data as $freight) :
-                                $mealID =  $freight['mealID'];
-                                $oderID=$freight['oderID'];
-                            endforeach;
-                            $stmt = $pdo->prepare("SELECT * FROM `meal` WHERE  meal_ID='{$mealID}'");
-                            $stmt->execute();
-                            $Name = $stmt->fetch(PDO::FETCH_ASSOC);
-
+                            if($stmt && !empty($Data)){
+                                foreach ($Data as $freight) :
+                                    $mealID =  $freight['mealID'];
+                                    $oderID=$freight['oderID'];
+                                endforeach;
+                                $stmt = $pdo->prepare("SELECT * FROM `meal` WHERE  meal_ID='{$mealID}'");
+                                $stmt->execute();
+                                $Name = $stmt->fetch(PDO::FETCH_ASSOC);    
+                            }
+                           
                             ?>
                             <?php foreach ($Data as $freight) : ?>
 
@@ -57,15 +59,15 @@
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <h5 class="card-title"><?= $Name["name"]?></h5>
-                                                <p class="card-text mb-0">Meal Short Description</p>
+                                                <h4 class="card-text mb-0">Oder Id:<?=$freight['oderID'];?></h4>
                                                 <p class="card-text mb-0"> Oder Anount:
                                                     <?= $freight["amount"] ?>
                                                 </p>                                                
-                                                <p class="card-text mb-0">Payed Anount: Ksh.
+                                                <p class="card-text mb-0">Price: Ksh.
                                                     <?= $freight["price"] ?>
                                                 </p>
                                                 <div class="btn btn-primary text-center col-12">
-                                                   <a href="router.php?page=usercanceloder.php& oderID=<?= $oderID ?>">Cancel Oder</a>
+                                                   <a class="text-dark" href="router.php?page=usercanceloder& oderID=<?= $oderID ?>">Cancel Oder</a>
                                                 </div>
                                                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                             </div>

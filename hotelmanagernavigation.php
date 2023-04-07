@@ -6,7 +6,7 @@
           <a class="navbar-brand" href="router.php?page=dashboard">Profile</a>
 
           <a class="navbar-brand" aria-current="page" href="#">View Oders</a>
-          <a class="navbar-brand" href="router.php?page=index">ADD MEAL</a>
+          <a class="navbar-brand" href="router.php?page=hotelManagerAddMeal">ADD MEAL</a>
           <a class="navbar-brand" href="router.php?page=index">MEALS</a>
           <a class="navbar-brand" href="router.php?page=index">PAYMENTS</a>
           <a class="btn btn-primary" href="router.php?page=logout">LOGOUT</a>
