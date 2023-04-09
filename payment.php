@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div class="card col-6 mb-3  shadow-sm text-success gx-5">
+        <div class="card mb-3  shadow-sm text-success gx-5">
             <div class="row g-0">
                 <div class="col-12">
                     <div class="card-body">

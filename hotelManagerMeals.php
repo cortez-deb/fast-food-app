@@ -19,7 +19,7 @@
 
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row"> 
             <div class="col-12">
 
                 <?php
@@ -51,7 +51,7 @@
                             <h5 class="card-title"><?= $product['name'] ?></h5>
                             <p class="card-text"><?= $product['description']?></p>
                             <p class="align-items-center">
-                            <h4 class="text-dark">Ksh.<?= $product['price'] ?></h4>
+                            <h4 class="text-dark">Ksh.<?= $product['price'] ?>  ID: <?= $product['meal_ID']?></h4>
                             <a href="hotelrouter.php?page=hotelmanagerDeleteMeal& pro_id=<?= $product['meal_ID'] ?>" class="btn btn-danger">Delete Meal</a>
                             </p>
                         </div>

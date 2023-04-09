@@ -23,19 +23,28 @@
 
 
 <?php include 'navigation.php';
-if (isset($_GET['price'])) {
-  $price = $_GET['price'];
-}
 if (isset($_GET['reply'])) {
-  $reply = $_GET['reply'];
-} ?>
+
+    $reply = $_GET['reply'];
+  }
+else{
+  $price ="";
+  $reply="";
+
+} 
+
+if (isset($_SESSION['cart'])){
+
+?>
 
 <div class="container">
-  <table class="table my-3">
+  <div class="row">
+
+  <table class="col-12 table my-3">
     <div class="container">
       <div class="row">
         <div class="col"><a href="emptycart.php" class="btn btn-sm btn-primary mt-2">Empty Cart</a></div>
-        <div class="col">Oder of amount<? echo $price ?> <? echo $reply ?></div>
+        <div class="col"><?=$reply ?></div>
       </div>
     </div>
     <thead>
@@ -50,34 +59,103 @@ if (isset($_GET['reply'])) {
 
     <tbody>
       <?php
-      if (isset($_SESSION['cart'])) :
+    
         $i = 1;
+        try{
+          foreach ($_SESSION['cart'] as $cart) :
+            $mealid=$cart['pro_id'];
+          endforeach;
+          if(!empty($mealid)){
+            $stmt=$pdo->prepare("SELECT * FROM meal WHERE meal_ID ='{$mealid}';");
+            $stmt->execute();
+            $Data= $stmt->fetchALL(PDO::FETCH_ASSOC);
+            foreach($Data as $pr):
+              $price=$pr['price'];
+              $mealid=$pr['meal_ID'];
+              $mealName=$pr['name'];
+             endforeach;
+          }
+
+
+        }
+         catch(PDOException $e){
+            echo $e->getMessage();
+         }
+        
         foreach ($_SESSION['cart'] as $cart) :
       ?>
           <tr class="text-center">
             <td><?php echo $i; ?> </td>
-            <td> Meal <?= $cart['pro_id']; ?></td>
+            <td> <?=$mealName?></td>
             <td>
               <form action="router.php?page=update" method="post">
                 <input type="number" value="<?= $cart['qty']; ?>" name="qty" min="1">
                 <input type="hidden" name="upid" value="<?= $cart['pro_id']; ?>">
             </td>
-            <td><?
-                echo $price;
-                ?></td>
+            <td>
+              KSh.
+              <?= $price*$cart['qty'];
+                ?>
+                </td>
             <td>
               <input type="submit" name="update" value="Update" class="btn btn-sm btn-primary">
               </form>
             </td>
             <td><a class="btn btn-sm btn-danger" href="router.php?page=removecartitem& id=<?= $cart['pro_id']; ?>">Remove</a></td>
-            <td><a class="btn btn-sm btn-primary" href="router.php?page=placeoder& id=<?= $cart['pro_id']; ?>">Place Oder</a></td>
+            <td> <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Place order
+              </button>
+            </td>
+
           </tr>
       <?php
           $i++;
-        endforeach;
-      endif;
+        endforeach; 
       ?>
     </tbody>
   </table>
+  </div>
+<?php }?>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel text-center">MPesa Pay Bill</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="card   shadow text-success">
+            <div class="row g-0">
+              <div class="col">
+                <div class="card-body">
+                  <div class="card-text">
+                    <H1>Pay Bill:32313</H1>
+                  </div>
+                  <div class="card-text">
+                    <H3>Enter Transaction Code and Oder Id as the account number</H3>
+                  </div>
+                  <form action="router.php?page=placeoder& id=<?= $cart['pro_id'];?>" method="post">
+                    <div class="row">
+                      <div class="col mb-3">
+                        <label for="number" class="form-label">Code</label>
+
+                        <input type="text" class="form-control " style="width: 20rem;" name="mpesacode" placeholder="<?php echo "error" ?>">
+                      </div>
+
+                    <div class="modal-footer">
+                      <input type="submit" data-bs-dismiss="modal" name="submit" value="submit" class="form-control mt-0 bg-success">
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
-<?php include 'footer.php'; ?>
+<?php  include 'footer.php'; ?>
