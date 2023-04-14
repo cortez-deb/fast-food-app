@@ -76,7 +76,7 @@
                         }
                         elseif($filter=="mealID"){
 
-                            $stmt = $pdo->prepare("SELECT * FROM payment where meal_ID='{$key}';");
+                            $stmt = $pdo->prepare("SELECT * FROM payment where meal_ID='{$key}' and meal_ID !=0;");
                             $stmt->execute();
                             $payments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             if ($stmt && !empty($payments)) {
@@ -88,13 +88,14 @@
                                     $customer = $dt['payedBy'];
                                 endforeach;
                             }else{
-                           echo "No such Meal Id";     
+                                $responce= '<span  class="alert alert-danger alert-dismissible text-capitalize"  role="alert">Sorry No such Meal ID in payments</span>';     
+     
                             }
 
                         }
                         elseif($filter=="OderID"){
                             
-                            $stmt = $pdo->prepare("SELECT * FROM payment where oderId='{$key}';");
+                            $stmt = $pdo->prepare("SELECT * FROM payment where oderId='{$key}' and oderId !=0;");
                             $stmt->execute();
                             $payments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             if ($stmt && !empty($payments)) {
@@ -106,7 +107,7 @@
                                     $customer = $dt['payedBy'];
                                 endforeach;
                             }else{
-                           echo "No such Order Id";     
+                                $responce= '<span  class="alert alert-danger alert-dismissible text-capitalize"  role="alert">Sorry No such Oder ID in payments</span>';          
                             }
                             
                         }
@@ -124,12 +125,12 @@
                                     $customer = $dt['payedBy'];
                                 endforeach;
                             }else{
-                                $responce= '<span  class="alert alert-danger alert-dismissible text-capitalize"  role="alert">Sorry No search Email in payments</span>';     
+                                $responce= '<span  class="alert alert-danger alert-dismissible text-capitalize"  role="alert">Sorry No Such Email in payments</span>';     
                             }
                             
                         }
                         else{
-                            $responce= '<span  class="alert alert-danger alert-dismissible text-capitalize"  role="alert">Sorry Failed to</span>';     
+                            $responce= '<span  class="alert alert-danger alert-dismissible text-capitalize"  role="alert">Search Criteria Not Found</span>';     
    
                         }
                     }

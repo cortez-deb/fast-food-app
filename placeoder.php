@@ -55,7 +55,7 @@ if (isset($_GET['id'])) {
 
                                                         if ($stmt) {
                                                             unset($_SESSION['cart'][$proid]);
-                                                            $_SESSION["responce"] = '<span class="text-danger">Oder Placed PLease wait for confirmation</span>';
+                                                            $_SESSION["responce"] = '<span class="alert alert-danger " role="alert">Oder Placed PLease wait for confirmation</span>';
                                                             header("location:router.php?page=cart& reply='{$_SESSION["responce"]}'");
                                                         } else {
                                                             $_SESSION["responce"] = '<span class="text-danger">Error occured try again later</span>';

@@ -3,7 +3,7 @@
     <div class="col-12">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="router.php?page=dashboard">Profile</a>
+          <a class="navbar-brand" href="hotelrouter.php?page=hotelDashboard">Profile</a>
 
           <a class="navbar-brand" aria-current="page" href="hotelrouter.php?page=hotelmanagerViewOders">View Oders</a>
           <a class="navbar-brand" href="hotelrouter.php?page=hotelManagerAddMeal">ADD MEAL</a>

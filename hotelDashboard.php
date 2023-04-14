@@ -22,7 +22,7 @@ include 'login.inc.php';
         <div class="row">
             <div class="col-12">
                 <?php
-                include("navigation.php");
+                include("hotelmanagernavigation.php");
                 ?>
             </div>
 
@@ -35,7 +35,7 @@ include 'login.inc.php';
         </div>
         <div class="row">
             <?php
-           // include("payment.php");
+          //  include("payment.php");
             ?>
             <footer class="col-12 ">
                 <?php
