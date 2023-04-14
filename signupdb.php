@@ -67,7 +67,7 @@ if(isset($_POST['Submit'])){
                                     try{      
                                     $hashedPassword = password_hash($password,PASSWORD_DEFAULT);
                                     $user_id=$email;
-                                    $access=2;
+                                    $access=1;
                                     $stmt = $pdo->prepare("INSERT INTO user( `user_ID`, `email`, `password`,`access`) VALUES ('{$user_id}','{$email}','{$hashedPassword}','{$access}')");
                                     $stmt->execute();
                                     if($stmt){header("location:login.php");}

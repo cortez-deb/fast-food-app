@@ -57,21 +57,21 @@ if(isset($_POST['Submit'])){
                                             $_SESSION['email']=$mail;
                                             $_SESSION['access']=$accesslevel;
                                             $_SESSION["login"] = "OK";
-                                            header("location:router.php?dashboard"); 
+                                            header("location:router.php?page=index"); 
                                         }
                                         elseif($accesslevel==2){
                                             session_start();
                                             $_SESSION['email']=$mail;
                                             $_SESSION['access']=$accesslevel;
                                             $_SESSION["login"] = "OK";
-                                            header("location:hotelrouter.php?hotelmanager");
+                                            header("location:hotelrouter.php?page=hotelmanager");
                                         }                                        
                                         elseif($accesslevel==3){
                                             session_start();
                                             $_SESSION['access']=$accesslevel;
                                             $_SESSION['email']=$mail;
                                             $_SESSION["login"] = "OK";
-                                            header("location:router.php?dashboard");
+                                            header("location:router.php?page=dashboard");
                                         }
 
                                     }catch(PDOException $e){

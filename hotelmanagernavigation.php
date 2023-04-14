@@ -8,7 +8,7 @@
           <a class="navbar-brand" aria-current="page" href="hotelrouter.php?page=hotelmanagerViewOders">View Oders</a>
           <a class="navbar-brand" href="hotelrouter.php?page=hotelManagerAddMeal">ADD MEAL</a>
           <a class="navbar-brand" href="hotelrouter.php?page=hotelManagerMeals">MEALS</a>
-          <a class="navbar-brand" href="#">PAYMENTS</a>
+          <a class="navbar-brand" href="hotelrouter.php?page=hotelManagerViewPanyment">PAYMENTS</a>
           <a class="btn btn-primary" href="hotelrouter.php?page=logout">LOGOUT</a>
         </div>
 
