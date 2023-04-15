@@ -22,18 +22,19 @@
                 <?php include 'adminnavigation.php';
 
                 ?>
+                
+            </div>
+            <div class="col-12">
+            <?php
+
+                         ?>
             </div>
         </div>
         <div class="row">
-            <div class="row">
-                <div class="col-12">
-                    <table class="table table-primary table-hover">
-                        <?php
-                                         if (isset($_GET['reply'])) {
-                                            $messege=$_GET['reply'];
-                                            echo $messege;
-                                         }
-                         ?>
+           
+                <div class="row">
+                    <table class="table table-striped table-striped">
+ 
                         <thead>
                             <tr>
                                 <th>
@@ -63,55 +64,62 @@
 
                             </tr>
                         </thead>
-
                         <tbody>
                             <?php
-
+                                         if (isset($_GET['reply'])) {
+                                            $messege=$_GET['reply'];
+                                               echo $messege;                                  
+                                               }
                             $pdo = pdo_connect_mysql();
                             $stmt = $pdo->prepare('SELECT * FROM user');
                             $stmt->execute();
                             $Data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                             ?>
-                            <?php foreach ($Data as $freight) : ?>
+                            <?php foreach ($Data as $acc) :
+                                
+                                ?>
                                 <tr>
                                     <td>
-                                        <?= $freight['user_ID'] ?>
+                                        <?= $acc['user_ID'] ?>
                                     </td>
                                     <td>
-                                        <?= $freight['firstname'] ?>
+                                        <?= $acc['firstname'] ?>
                                     </td>
                                     <td>
-                                        <?= $freight['email'] ?>
+                                        <?= $acc['email'] ?>
                                     </td>
                                     <td>
-                                        <?= $freight['phone'] ?>
+                                        <?= $acc['phone'] ?>
                                     </td>
                                     <td>
-                                        <?= $freight['address1'] ?>
+                                        <?= $acc['address1'] ?>
                                     </td>                                   
                                      <td>
                                         <?php
                                         $access;
-                                        if($freight['access'] ==1){
+                                        if($acc['access'] ==1){
                                             $access="Admin"; 
                                         }
-                                        elseif($freight['access'] ==2){
-                                            $access="user";
-                                        }elseif($freight['access'] ==3){
+                                        elseif($acc['access'] ==2){
+                                            $access="Hotel Manager";
+                                        }elseif($acc['access'] ==3){
                                             $access="deliverer";
+                                        }elseif($acc['access'] ==4){
+                                            $access="Customer";
                                         }
                                         ?>
                                         <?= $access ?>
                                     </td>
                                     <td>
-                                        <form action="deliverRouter.php?page=admin_change_access_db& user=<?= $freight['email'] ?>" method="post">
+                                        <form action="adminRouter.php?page=admin_change_access_db& user=<?= $acc['email'] ?>" method="post">
                                             <div class="col-4">
                                                 <select name="action" id="destination">
 
                                                     <option value="1">Admin</option>
-                                                    <option value="2">User</option>
+                                                    <option value="2">Hotel Manager</option>
                                                     <option value="3">Deliver</option>
+                                                    <option value="4">Customer</option>
                                                     <option value="delete">Delete</option>
 
                                                 </select>
@@ -126,7 +134,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            
             <div class="col-12">
                 <?php include 'footer.php'; ?>
             </div>

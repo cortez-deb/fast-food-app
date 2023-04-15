@@ -57,7 +57,7 @@ if(isset($_POST['Submit'])){
                                             $_SESSION['email']=$mail;
                                             $_SESSION['access']=$accesslevel;
                                             $_SESSION["login"] = "OK";
-                                            header("location:router.php?page=index"); 
+                                            header("location:adminRouter.php?page=adminDashboard"); 
                                         }
                                         elseif($accesslevel==2){
                                             session_start();
@@ -71,7 +71,14 @@ if(isset($_POST['Submit'])){
                                             $_SESSION['access']=$accesslevel;
                                             $_SESSION['email']=$mail;
                                             $_SESSION["login"] = "OK";
-                                            header("location:router.php?page=dashboard");
+                                            header("location:deliverRouter.php?page=deliverDashboard");
+                                        }
+                                        elseif($accesslevel==4){
+                                            session_start();
+                                            $_SESSION['access']=$accesslevel;
+                                            $_SESSION['email']=$mail;
+                                            $_SESSION["login"] = "OK";
+                                            header("location:router.php?page=index");
                                         }
 
                                     }catch(PDOException $e){

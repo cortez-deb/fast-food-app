@@ -16,7 +16,7 @@ iF($_SERVER['REQUEST_METHOD']==='POST'){
                     $stmt = $pdo->prepare("DELETE FROM `user` WHERE `email`='{$usermail}';");
                     $stmt->execute();
                     if($stmt){
-                        $user_removed='<span class="text-danger">User has been deleted</span>';
+                        $user_removed='<span class="alert alert-success" role="alert">User has been deleted</span>';
                         $reply=$user_removed;
                         header("location:adminRouter.php?page=admin_change_access& reply='{$reply}'");
                     }
@@ -32,7 +32,7 @@ iF($_SERVER['REQUEST_METHOD']==='POST'){
                 $stmt = $pdo->prepare("UPDATE user SET access='{$change}' WHERE email='{$usermail}';");
                 $stmt->execute();
                 if($stmt){
-                    $access_level='<span class="text-danger">User access level changed</span>';
+                    $access_level='<span class="alert alert-success" role="alert">User access level changed</span>';
                     $reply=$access_level;
                     header("location:adminRouter.php?page=admin_change_access& reply='{$reply}'");
                 }
@@ -48,7 +48,7 @@ iF($_SERVER['REQUEST_METHOD']==='POST'){
                 $stmt = $pdo->prepare("UPDATE user SET access='{$change}' WHERE email='{$usermail}';");
                 $stmt->execute();
                 if($stmt){
-                    $access_level='<span class="text-danger">User access level changed</span>';
+                    $access_level='<span class="alert alert-success" role="alert">User access level changed</span>';
                     $reply=$access_level;
                     header("location:adminRouter.php?page=admin_change_access& reply='{$reply}'");
                 }
@@ -63,7 +63,21 @@ iF($_SERVER['REQUEST_METHOD']==='POST'){
              $stmt = $pdo->prepare("UPDATE user SET access='{$change}' WHERE email='{$usermail}';");
             $stmt->execute();
             if($stmt){
-                $access_level='<span class="text-danger">User access level changed</span>';
+                $access_level='<span class="alert alert-success" role="alert">User access level changed</span>';
+                $reply=$access_level;
+                header("location:adminRouter.php?page=admin_change_access& reply='{$reply}'");
+            }}catch(PDOException $ex){
+                $reply=$ex->getMessage();
+                header("location:adminRouter.php?page=admin_change_access& reply='{$reply}'"); 
+            }
+
+        }
+        elseif($change==4){
+            try{    
+             $stmt = $pdo->prepare("UPDATE user SET access='{$change}' WHERE email='{$usermail}';");
+            $stmt->execute();
+            if($stmt){
+                $access_level='<span class="alert alert-success" role="alert">User access level changed</span>';
                 $reply=$access_level;
                 header("location:adminRouter.php?page=admin_change_access& reply='{$reply}'");
             }}catch(PDOException $ex){
@@ -73,7 +87,7 @@ iF($_SERVER['REQUEST_METHOD']==='POST'){
 
         }
         else{
-            $access_level='<span class="text-danger">error occured</span>';
+            $access_level='<span class="alert alert-danger" role="alert">error occured</span>';
             $reply=$access_level;
             header("location:adminRouter.php?page=admin_change_access& reply='{$reply}'");
         }
