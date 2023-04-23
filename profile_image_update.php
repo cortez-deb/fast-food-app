@@ -1,5 +1,4 @@
 <?php
-require('connect.php');
 include 'login.inc.php';
 $pdo = pdo_connect_mysql();
 $error="";
@@ -76,13 +75,16 @@ $error="";
                                             if ($stmt) {
                                                 $error = '<span class="text-danger">Details have been updated</span>';
                                                 if($accesslevel==1){
-                                                    header("location:adminRouter.php?adminDashboard"); 
+                                                    header("location:adminRouter.php?page=adminDashboard");  
                                                 }
                                                 elseif($accesslevel==2){
-                                                    header("location:router.php?dashboard");
+                                                    header("location:hotelrouter.php?page=hotelmanager");
                                                 }                                        
                                                 elseif($accesslevel==3){
-                                                    header("location:deliverrouter.php?delivery");
+                                                    header("location:deliverRouter.php?page=deliverDashboard");
+                                                }
+                                                elseif($accesslevel==4){
+                                                    header("location:router.php?page=index");
                                                 }
                                             }
                                             else{

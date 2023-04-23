@@ -147,6 +147,8 @@ include 'login.inc.php';
                     <tr>
                         <th scope="col">Oder ID</th>
                         <th scope="col">Customer</th>
+                        <th>Customer diteils</th>
+                        <th>Mark as complete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -161,8 +163,8 @@ include 'login.inc.php';
 
                         <td><?= $dt['oderID']; ?></td>
                         <td><?= $dt['email']; ?></td>
+                        <td><a class="btn btn-primary stretched-lin" href="deliverRouter.php?page=deliverCustomerProfile& email=<?=$dt['email'];?>&oder=<?=$dt['oderID']?>">check?</a></td>
                         <td><a class="btn btn-primary stretched-lin" href="#">complete?</a></td>
-                        <td><a class="btn btn-primary stretched-lin" href="#">Incomplete?</a></td>
                      </tr>
                        
                     <?php endforeach;

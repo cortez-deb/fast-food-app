@@ -2,7 +2,7 @@
 include 'profiler.php';
 
 ?>
-        <div class="col-lg-3 col-md-3 col-sm-12">
+        <div class="col-lg-3 col-md-3 col-sm-12 mt-3">
             <div class="card shadow p-3 mb-5 bg-body ">
                 <?php
 
@@ -42,14 +42,14 @@ include 'profiler.php';
 
 
                     </p>
-                    <form class="mb-3" action="profile_image_update.php" method="post" enctype="multipart/form-data">
+                    <form class="mb-3" action="router.php?page=profile_image_update" method="post" enctype="multipart/form-data">
                         <input type="file" name="image" id="image">
                         <input type="submit" name="Submit" value="Submit" class="mt-4 btn shadow-sm text-dark bg-primary">
                     </form>
                 </div>
             </div>
     </div>
-    <div class="col-lg-9 col-md-9 col-sm-12">
+    <div class="col-lg-9 col-md-9 col-sm-12 mt-3">
         <form class="row g-3" style="height:20rem" action="" method="POST">
             <div class="col-lg-12">
                 <h3>
