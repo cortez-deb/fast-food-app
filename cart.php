@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>userdashboard.html</title>
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+   rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous">
   <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
@@ -16,30 +16,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap"
+   rel="stylesheet">
   <link rel="stylesheet" href="css/bootstrap.css">
 </head>
-
-
-
 <?php include 'navigation.php';
 if (isset($_GET['reply'])) {
-
     $reply = $_GET['reply'];
   }
 else{
   $price ="";
   $reply="";
-
-} 
-
+}
 if (isset($_SESSION['cart'])){
-
 ?>
-
 <div class="container">
   <div class="row">
-
   <table class="col-12 table my-3">
     <div class="container">
       <div class="row">
@@ -56,10 +48,8 @@ if (isset($_SESSION['cart'])){
         <th colspan="2">Action</th>
       </tr>
     </thead>
-
     <tbody>
-      <?php
-    
+      <?php   
         $i = 1;
         try{
           foreach ($_SESSION['cart'] as $cart) :
@@ -75,13 +65,10 @@ if (isset($_SESSION['cart'])){
               $mealName=$pr['name'];
              endforeach;
           }
-
-
         }
          catch(PDOException $e){
             echo $e->getMessage();
-         }
-        
+         }    
         foreach ($_SESSION['cart'] as $cart) :
       ?>
           <tr class="text-center">
@@ -106,7 +93,6 @@ if (isset($_SESSION['cart'])){
                 Place order
               </button>
             </td>
-
           </tr>
       <?php
           $i++;
@@ -139,21 +125,17 @@ if (isset($_SESSION['cart'])){
                     <div class="row">
                       <div class="col mb-3">
                         <label for="number" class="form-label">Code</label>
-
                         <input type="text" class="form-control " style="width: 20rem;" name="mpesacode" placeholder="<?php echo "error" ?>">
                       </div>
-
                     <div class="modal-footer">
                       <input type="submit" data-bs-dismiss="modal" name="submit" value="submit" class="form-control mt-0 bg-success">
                     </div>
                   </form>
-
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>

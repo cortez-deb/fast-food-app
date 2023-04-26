@@ -34,10 +34,7 @@ include 'login.inc.php';
             ?>
         </div>
         <div class="row">
-            <?php
-           // include("payment.php");
-            ?>
-            <footer class="col-12 ">
+            <footer class="col-12">
                 <?php
                 include("footer.php");
                 ?>

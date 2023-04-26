@@ -9,8 +9,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav navbar-nav">
-                <li class="active col"> <a href="adminRouter.php?page=admin_pending_products"  class="btn btn-hover">Payments</a></li>
-                <li class="active col"><a href="#"  class="btn btn-hover">Hotels</a></li>
+                <li class="active col"> <a href="adminRouter.php?page=Adminpayments"  class="btn btn-hover">Payments</a></li>
+                <li class="active col"><a href="adminRouter.php?page=AdminHotels"  class="btn btn-hover">Hotels</a></li>
                 <li class="active col"><a href="adminRouter.php?page=admin_change_access" class="btn btn-hover">ACCESS CONTROL</a></li>
                 <li class="active col"><a href="adminRouter.php?page=logout"  class="btn btn-warning">LOGOUT</a></li>
             </ul>
