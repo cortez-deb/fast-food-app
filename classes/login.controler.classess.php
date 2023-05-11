@@ -8,7 +8,7 @@ public function __construct($email,$passsword)
  $this->email=$email;
  $this->passsword= $passsword; 
 }
-public function user(){
+public function IsLogedIn(){
     if($this->emptyInputs()==false){
         header("location:../../views/signup.php? error=Empty Fields Not Allowed");
         exit();

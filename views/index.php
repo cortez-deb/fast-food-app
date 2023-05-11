@@ -61,7 +61,7 @@
       <?php foreach ($products_by_price as $product) : ?>
         <div class="col mb-2  mt-2 m-0 g-0">
           <div class="card" style="width: 18rem;">
-            <img src="photos/<?= $product['image'] ?>" class="card-img-top" style="height: 200px;">
+            <img src="../photos/<?= $product['image'] ?>" class="card-img-top" style="height: 200px;">
             <div class="card-body">
               <h5 class="card-title"><?= $product['name'] ?></h5>
               <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore excepturi quam quia quo alias iste magni et.</p>

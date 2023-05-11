@@ -6,5 +6,8 @@ if(isset($_POST['Submit'])){
 //instanciate classess
 include "../classes/connect.php";
 include "../classes/login.database.php";
-include "../classes/login.controler.classes.php";
+include "../classes/login.controler.classess.php";
+
+$login = new login_controler($email,$password);
+$login->IsLogedIn();
 }

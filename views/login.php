@@ -9,7 +9,7 @@
      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="sidebar.css">
     </style>
 </head>
@@ -21,21 +21,17 @@
                 <div class="card-body">
                     <h2 class="card-title text-center">LOGIN</h2>
                     <p class="card-text">Please login to continue</p>
-                    <?php include'logindb.php'; ?>
-                    <?php echo $credentialserror ?>
-                    <?php  $messege?>
+                    <?php include("../includes/login.inc.php"); ?>
                     <form method="POST" action="">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Email address</label>
                             <input type="email" class="form-control" id="" name="email" aria-describedby="emailHelp">
-                            <?php echo $emailEmptyerror?>
                             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                            
                         </div>
                         <div class="mb-3">
                             <label for=""  class="form-label">Password</label>
                             <input type="password" class="form-control" id="" name="password">
-                            <?php echo $passwordEmptyerror?>
                         </div>
                         <div class="mb-3 form-check">
                         <p class="card-text">Don't have an account?    <a href="signup.php" class="card-link">Sign up?</p>
