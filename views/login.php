@@ -21,7 +21,15 @@
                 <div class="card-body">
                     <h2 class="card-title text-center">LOGIN</h2>
                     <p class="card-text">Please login to continue</p>
-                    <?php include("../includes/login.inc.php"); ?>
+                    <?php include("../includes/login.inc.php"); 
+                    if(isset($_GET['error'])){
+                        $error = $_GET['error'];
+                    }
+                    else{
+                        $error ="";
+                    }
+                    ?>
+                    <span class=" text-center text-danger" > <?=$error?> </span>
                     <form method="POST" action="">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Email address</label>

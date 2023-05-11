@@ -54,7 +54,7 @@
                                 <div class="card col-lg-3 col-md-5 col-sm-12 m-4" style="max-width: 500px;">
                                     <div class="row g-0">
                                         <div class="col-md-4">
-                                            <img src="./photos/<?=  $Name["image"]?>" class="img-fluid rounded-start mt-3 col-sm-12 col-12" style="height:10rem" alt="...">
+                                            <img src="../photos/<?=  $Name["image"]?>" class="img-fluid rounded-start mt-3 col-sm-12 col-12" style="height:10rem" alt="...">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
@@ -66,8 +66,8 @@
                                                 <p class="card-text mb-0">Price: Ksh.
                                                     <?= $freight["price"] ?>
                                                 </p>
-                                                <div class="btn btn-primary text-center col-12">
-                                                   <a class="text-dark" href="router.php?page=usercanceloder& oderID=<?= $oderID ?>">Cancel Oder</a>
+                                                <div class="">
+                                                   <a class="text-dark btn btn-primary text-center col-12" href="router.php?page=usercanceloder& oderID=<?= $oderID ?>">Cancel Oder</a>
                                                 </div>
                                                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                             </div>

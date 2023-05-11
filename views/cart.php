@@ -35,7 +35,6 @@ if (isset($_SESSION['cart'])){
   <table class="col-12 table my-3">
     <div class="container">
       <div class="row">
-        <div class="col"><a href="emptycart.php" class="btn btn-sm btn-primary mt-2">Empty Cart</a></div>
         <div class="col"><?=$reply ?></div>
       </div>
     </div>
@@ -68,7 +67,8 @@ if (isset($_SESSION['cart'])){
         }
          catch(PDOException $e){
             echo $e->getMessage();
-         }    
+         }  
+         if(!empty($_SESSION['cart'])){  
         foreach ($_SESSION['cart'] as $cart) :
       ?>
           <tr class="text-center">
@@ -97,11 +97,21 @@ if (isset($_SESSION['cart'])){
       <?php
           $i++;
         endforeach; 
+      }
+      else{
+      }
       ?>
     </tbody>
+    <?php
+    if(empty($_SESSION['cart'])){
+      echo('<span class="alert alert-info" role="alert">No ITEMS IN CART</span>');
+    }
+    ?>
   </table>
   </div>
-<?php }?>
+<?php } 
+      
+      ?>
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

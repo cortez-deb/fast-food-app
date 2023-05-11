@@ -13,10 +13,16 @@
   </a>
 
   <a class="nav-link" href="router.php?page=cart">
-    <h3 class="h3">Cart</h3>
+    <h3 class="h3">Cart
     <?php if (isset($_SESSION['cart'])) : ?>
-      <?php echo count($_SESSION['cart']);; ?>
+      <?php
+        if(count($_SESSION['cart'])>0):
+        echo count($_SESSION['cart']);
+        endif;
+         ?>
     <?php endif; ?>
+    </h3>
+
   </a>
   <a class="nav-link" href="router.php?page=userOders">
     <h3 class="h3">Oders</h3>

@@ -9,13 +9,12 @@ class login extends database
             header("location:../views/login.php?error=check your cridentials");
             exit();
         }
-        $resulCheck = "";
         if ($stmt->rowCount() > 0) {
             $stmt = $this->connect()->prepare("SELECT password FROM user WHERE email =?");
             $stmt->execute(array($email));
             $hash =$stmt->fetch();
            if(!password_verify($password,$hash[0])){
-            $resulCheck = false;
+            header("location:../views/login.php?error=check your cridentials");
            }else{
             $stmt = $this->connect()->prepare("SELECT * FROM user WHERE email =?");
             $stmt->execute(array($email));
@@ -55,6 +54,5 @@ class login extends database
          else {
             header("location:../views/login.php?error=check your cridentials");
         }
-        return $resulCheck;
     }
 }

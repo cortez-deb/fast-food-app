@@ -22,12 +22,14 @@
 <body class="mx-0 p-0 mb-0 border-0">
   <?php
   include 'login.inc.php';
+  $inCart;
   if (isset($_GET['pro_id'])) {
     $proid = $_GET['pro_id'];
     if (!empty($_SESSION['cart'])) {
       $acol = array_column($_SESSION['cart'], 'pro_id');
       if (in_array($proid, $acol)) {
         $_SESSION['cart'][$proid]['qty'] += 1;
+        $inCart=true;
       } else {
         $item = [
           'pro_id' => $_GET['pro_id'],
@@ -53,9 +55,12 @@
       $products_by_price = $stmt->fetchAll(PDO::FETCH_ASSOC);
       ?>
     </div>
-    <div class="row align-items-start">
-      <div class="d-flex col">
-      </div>
+    <div class="row">
+    <?php
+    if(!empty($inCart)){
+      echo('<span class="alert alert-info" role="alert">ITEM Already Added, Please change quantity in Cart </span>');
+    }
+    ?>
     </div>
     <div class="row align-items-start">
       <?php foreach ($products_by_price as $product) : ?>
@@ -64,10 +69,10 @@
             <img src="../photos/<?= $product['image'] ?>" class="card-img-top" style="height: 200px;">
             <div class="card-body">
               <h5 class="card-title"><?= $product['name'] ?></h5>
-              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore excepturi quam quia quo alias iste magni et.</p>
+              <p class="card-text"><?php $product['description']?></p>
               <p class="align-items-center">
               <h4 class="text-dark">Ksh.<?= $product['price'] ?></h4>
-              <a href="router.php?page=index& pro_id=<?= $product['meal_ID'] ?>" class="btn btn-success">Add to Cart</a>
+              <a href="router.php?page=index& pro_id=<?= $product['meal_ID'] ?>" class="btn btn-success col-12">Add to Cart</a>
               </p>
             </div>
           </div>
