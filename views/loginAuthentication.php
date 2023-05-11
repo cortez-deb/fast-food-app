@@ -2,7 +2,6 @@
 if(isset($_SERVER['HTTP_REFERER'])){
     session_start();
     require($_SERVER["DOCUMENT_ROOT"]."/connect.php");
-    $db_connect=pdo_connect_mysql();
     $email = htmlspecialchars($_POST["email"]);
     $password = htmlspecialchars($_POST["password"]);
 

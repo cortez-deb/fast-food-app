@@ -23,25 +23,29 @@ include 'navigation.php';
                 <div class="card-body">
                     <h2 class="card-title text-center">Sign up</h2>
                     <p class="card-text">Please enter you email address and password</p>
-                    <?php include 'signupdb.php'?>
+                    <?php include '../includes/signup.inc.php';
+                    if(isset($_GET['error'])){
+                            $error = $_GET['error'];
+
+                    }
+                    
+                    ?>
+                    <span class=" text-center text-danger" > <?=$error?> </span>
                     <form action="" method="post" name="form"">
                         <div class="mb-3">
-                        <?php echo $passwordMissMatcherror;?>
-                        <?php  echo $passwordLengthError; ?>
                             <label for="exampleInputEmail1" class="form-label">Email address</label>
                             <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
-                            <?php echo $emailEmptyerror; echo $emailExistserror ?>
                             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Password</label>
                             <input type="password" class="form-control" name="password">
-                            <?php echo $passwordEmptyerror ?>
+                           
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
                             <input type="password" class="form-control" name="confirmpassword">
-                            <?php echo $confirmPasswordEmptyerror?>
+                          
                         </div>
                         <div class="mb-3 form-check">
                         <p class="card-text"> Have an account?    <a href="login.php" class="card-link">Login?</p>

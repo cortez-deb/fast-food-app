@@ -7,7 +7,6 @@ $credentialserror="";
 $passwordEmptyerror="";
 if(isset($_POST['Submit'])){
 
-    $pdo=pdo_connect_mysql();
     $email =stripslashes( htmlspecialchars($_POST["email"]));
     $password =stripslashes( htmlspecialchars($_POST["password"]));
     $responce=[
